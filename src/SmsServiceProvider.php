@@ -12,6 +12,7 @@ class SmsServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/config/sms.php', 'sms');
+        $this->loadTranslationsFrom(__DIR__.'/lang', 'SmsService');
     }
 
     /**
@@ -30,6 +31,17 @@ class SmsServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/config/sms.php' => config_path('sms.php'),
             ], 'sms-config');
+            
+            // انتشار فایل‌های config
+        $this->publishes([
+            __DIR__.'/config/sms.php' => config_path('sms.php'),
+        ], 'config');
+    
+        $this->publishes([
+            __DIR__.'/lang/fa/sms.php' => resource_path('lang/vendor/SmsService/sms.php'),
+        ]);
+    }
+}
         }
     }
 }
