@@ -1,0 +1,36 @@
+{
+    "name": "laravel/iran-sms-service",
+    "description": "send sms with iranian sms providers for laravel app",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "SmsService\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SmsService\\SmsServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "SF",
+            "email": "p.manteali@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.2.0",
+        "illuminate/database": ">=5.0",
+        "illuminate/support": ">=5.0",
+        "kavenegar/php": "^1.2",
+        "cryptommer/smsir": "^1.1"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
