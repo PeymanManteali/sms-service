@@ -4,7 +4,7 @@ namespace SmsService;
 
 use Illuminate\Support\ServiceProvider;
 
-class SMSServiceProvider extends ServiceProvider
+class SmsServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
