@@ -11,7 +11,7 @@ class SmsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->mergeConfigFrom(__DIR__.'/config/sms.php', 'sms');
     }
 
     /**
@@ -19,22 +19,17 @@ class SmsServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if ($this->app->runningInConsole()) {
-            // انتشار فایل‌های migration
+        if (app()->runningInConsole()) {
+            
+            $this->loadMigrationsFrom(__DIR__.'/migrations');
+
             $this->publishes([
-                __DIR__.'/migrations' => database_path('migrations'),
-            ], 'migrations');
-        
-            // انتشار فایل‌های config
+                __DIR__.'/../database/migrations' => database_path('migrations'),
+            ], 'sanctum-migrations');
+
             $this->publishes([
                 __DIR__.'/config/sms.php' => config_path('sms.php'),
-            ], 'config');
-        
-            // انتشار فایل‌های زبان
-            $this->loadTranslationsFrom(__DIR__.'/lang', 'SmsService');
-            $this->publishes([
-                __DIR__.'/lang' => resource_path('lang/vendor/SmsService'),
-            ]);
+            ], 'sms-config');
         }
     }
 }
