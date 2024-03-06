@@ -11,8 +11,7 @@ class SMSServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/migrations');
-        $this->loadTranslationsFrom(__DIR__ . '/lang' ,__NAMESPACE__);
+        //
     }
 
     /**
@@ -20,7 +19,22 @@ class SMSServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . '/config/sms.php', 'sms');
+        if ($this->app->runningInConsole()) {
+            // انتشار فایل‌های migration
+            $this->publishes([
+                __DIR__.'/migrations' => database_path('migrations'),
+            ], 'migrations');
+        
+            // انتشار فایل‌های config
+            $this->publishes([
+                __DIR__.'/config/sms.php' => config_path('sms.php'),
+            ], 'config');
+        
+            // انتشار فایل‌های زبان
+            $this->loadTranslationsFrom(__DIR__.'/lang', 'SmsService');
+            $this->publishes([
+                __DIR__.'/lang' => resource_path('lang/vendor/SmsService'),
+            ]);
+        }
     }
 }
