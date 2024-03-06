@@ -1,6 +1,6 @@
 {
-    "name": "laravel/iran-sms-service",
-    "description": "send sms with iranian sms providers for laravel app",
+    "name": "peyman-manteali/laravel-sms-service",
+    "description": "add iranian sms providers to your laravel app",
     "type": "library",
     "autoload": {
         "psr-4": {
