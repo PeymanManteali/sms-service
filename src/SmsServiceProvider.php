@@ -29,14 +29,6 @@ class SmsServiceProvider extends ServiceProvider
                 __DIR__.'/config/sms.php' => config_path('sms.php'),
                 __DIR__.'/lang/fa/sms.php' => resource_path('lang/vendor/SmsService/sms.php')
             ], 'laravel-assets');
-
-            $this->publishes([
-                __DIR__.'/config/sms.php' => config_path('sms.php'),
-            ], 'laravel-assets');
-    
-            $this->publishes([
-            __DIR__.'/lang/fa/sms.php' => resource_path('lang/vendor/SmsService/sms.php'),
-            ],'laravel-assets');
         }
     }
  }
