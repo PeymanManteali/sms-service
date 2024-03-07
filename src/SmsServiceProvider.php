@@ -26,15 +26,17 @@ class SmsServiceProvider extends ServiceProvider
 
             $this->publishes([
                 __DIR__.'/../database/migrations' => database_path('migrations'),
-            ], 'sms-migrations');
+                __DIR__.'/config/sms.php' => config_path('sms.php'),
+                __DIR__.'/lang/fa/sms.php' => resource_path('lang/vendor/SmsService/sms.php')
+            ], 'laravel-assets');
 
             $this->publishes([
                 __DIR__.'/config/sms.php' => config_path('sms.php'),
-            ], 'sms-config');
+            ], 'laravel-assets');
     
             $this->publishes([
             __DIR__.'/lang/fa/sms.php' => resource_path('lang/vendor/SmsService/sms.php'),
-                ]);
+            ],'laravel-assets');
         }
     }
  }
