@@ -11,8 +11,7 @@ class SmsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/config/sms.php', 'sms');
-        $this->loadTranslationsFrom(__DIR__.'/lang', 'SmsService');
+        //
     }
 
     /**
@@ -21,13 +20,10 @@ class SmsServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if (app()->runningInConsole()) {
-            
-            $this->loadMigrationsFrom(__DIR__.'/migrations');
-
             $this->publishes([
-                __DIR__.'/../database/migrations' => database_path('migrations'),
+                __DIR__.'/migrations' => database_path('migrations'),
                 __DIR__.'/config/sms.php' => config_path('sms.php'),
-                __DIR__.'/lang/fa/sms.php' => resource_path('lang/vendor/SmsService/sms.php')
+                __DIR__.'/lang/fa/sms.php' => resource_path('lang/fa/sms.php')
             ], 'laravel-assets');
         }
     }
