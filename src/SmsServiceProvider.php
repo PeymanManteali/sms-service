@@ -26,22 +26,15 @@ class SmsServiceProvider extends ServiceProvider
 
             $this->publishes([
                 __DIR__.'/../database/migrations' => database_path('migrations'),
-            ], 'sanctum-migrations');
+            ], 'sms-migrations');
 
             $this->publishes([
                 __DIR__.'/config/sms.php' => config_path('sms.php'),
             ], 'sms-config');
-            
-            // انتشار فایل‌های config
-        $this->publishes([
-            __DIR__.'/config/sms.php' => config_path('sms.php'),
-        ], 'config');
     
-        $this->publishes([
+            $this->publishes([
             __DIR__.'/lang/fa/sms.php' => resource_path('lang/vendor/SmsService/sms.php'),
-        ]);
-    }
-}
+                ]);
         }
     }
-}
+ }
